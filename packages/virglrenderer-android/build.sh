@@ -67,7 +67,7 @@ termux_step_host_build() {
 		--cross-file $TERMUX_MESON_CROSSFILE \
 		--prefix=$_INSTALL_PREFIX \
 		--libdir lib \
-		-Dplatforms=egl
+		-Dplatforms=egl -Dvenus=true
 	ninja -C virglrenderer-build install -j $TERMUX_PKG_MAKE_PROCESSES
 
 	# Move our virglrenderer binary to regular bin directory.
