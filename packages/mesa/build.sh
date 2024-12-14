@@ -28,6 +28,7 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Dshared-llvm=disabled
 -Dplatforms=x11,wayland
 -Dgallium-drivers=swrast,virgl,zink
+-Dvulkan-drivers=virtio
 -Dosmesa=true
 -Dglvnd=true
 -Dxmlconfig=disabled
