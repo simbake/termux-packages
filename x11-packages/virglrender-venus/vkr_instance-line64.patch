@@ -1,0 +1,10 @@
+--- a/src/venus/vkr_instance.c
++++ b/src/venus/vkr_instance.c
+@@ -60,6 +60,7 @@ vkr_validation_callback(UNUSED VkDebugUtilsMessageSeverityFlagBitsEXT messageSev
+                         UNUSED VkDebugUtilsMessageTypeFlagsEXT messageTypes,
+                         const VkDebugUtilsMessengerCallbackDataEXT *pCallbackData,
+                         void *pUserData)
++   __attribute__((pcs("aapcs-vfp")))
+ {
+    struct vkr_context *ctx = pUserData;
+ 
