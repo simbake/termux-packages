@@ -21,4 +21,4 @@ termux_setup_cmake
 
 CPPFLAGS+=" -D__USE_GNU"
 LDFLAGS+=" -landroid-shmem"
- }
+}
