@@ -18,22 +18,17 @@ TERMUX_PKG_REPLACES="libmesa"
 # FIXME: Set `shared-llvm` to disabled if possible
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 --cmake-prefix-path $TERMUX_PREFIX
--Dcpp_rtti=false
--Dgbm=enabled
--Dopengl=true
--Degl=enabled
--Degl-native-platform=x11
--Dgles1=disabled
--Dgles2=enabled
--Ddri3=enabled
--Dglx=dri
--Dllvm=enabled
--Dshared-llvm=enabled
--Dplatforms=x11,wayland
--Dgallium-drivers=swrast,virgl,zink
--Dosmesa=true
--Dglvnd=enabled
+-Dgallium-drivers=
+-Dplatforms=x11,android
+-Dandroid-libbacktrace=disabled
+-Dandroid-stub=true
+-Dopengl=false
+-Dgbm=disabled
+-Dllvm=disabled
+-Dshared-llvm=disabled
+-Dperfetto=false
 -Dxmlconfig=disabled
+-Dbuildtype=debug
 "
 
 termux_step_post_get_source() {
@@ -60,10 +55,9 @@ termux_step_pre_configure() {
 	export PATH="$_WRAPPER_BIN:$PATH"
 
 	if [ $TERMUX_ARCH = "arm" ] || [ $TERMUX_ARCH = "aarch64" ]; then
-		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=swrast,freedreno"
-		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dfreedreno-kmds=msm,kgsl"
+		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=virtio"
 	elif [ $TERMUX_ARCH = "i686" ] || [ $TERMUX_ARCH = "x86_64" ]; then
-		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=swrast"
+		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=virtio"
 	else
 		termux_error_exit "Invalid arch: $TERMUX_ARCH"
 	fi
