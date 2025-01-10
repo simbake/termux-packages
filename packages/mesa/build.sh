@@ -28,7 +28,6 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Dshared-llvm=disabled
 -Dperfetto=false
 -Dxmlconfig=disabled
--Dbuildtype=debug
 "
 
 termux_step_post_get_source() {
